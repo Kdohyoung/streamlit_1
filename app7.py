@@ -37,19 +37,32 @@ def mian() :
             print(upload_file.name)
             print(upload_file.size)
             print(upload_file.type)
-        # 파일명을 유니크하게 만들어서 저장해야 한다.
-        # 현재시간을 활용해서, 파일명은 만든다.
-        current_time = datetime.now()
-        print(current_time.isoformat().replace(':','_'))+'.jpg'
-        new_filename  = current_time.isoformat().replace(':','_')+'.jpg'
-        upload_file.name = new_filename
-        save_uploaded_file('temp',upload_file)
+            # 파일명을 유니크하게 만들어서 저장해야 한다.
+            # 현재시간을 활용해서, 파일명은 만든다.
+            current_time = datetime.now()
+            print(current_time.isoformat().replace(':','_'))+'.jpg'
+            new_filename  = current_time.isoformat().replace(':','_')+'.jpg'
+            upload_file.name = new_filename
+            save_uploaded_file('temp',upload_file)
+
 
 
 
 
     elif choice == menu[1] :
         st.subheader('CSV 파일 업로드')
+        
+        upload_file = st.file_uploader('CSV 파일선택',type=['csv'])
+        if upload_file is not None :
+                # 파일명을 유니크하게 만들어서 저장해야 한다.
+                # 현재시간을 활용해서, 파일명은 만든다.
+                current_time = datetime.now()
+                print(current_time.isoformat().replace(':','_'))+'.jpg'
+                new_filename  = current_time.isoformat().replace(':','_')+'.csv'
+                upload_file.name = new_filename
+                save_uploaded_file('temp',upload_file)
+
+
     else :
         st.subheader('파일 업로드 프로젝트입니다.')
 
